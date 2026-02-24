@@ -72,5 +72,38 @@ export default function QueryProcessor(query: string): string {
       return String(res.join(", "));
     }
   }
+
+  if (query.toLowerCase().includes("primes")) {
+    const match = query.match(/primes:\s+(\d+)+,\s+(\d+)+,\s+(\d+)+,\s+(\d+)+,\s+(\d+)/i);
+    if (match) {
+      const num1 = parseInt(match[1], 10);
+      const num2 = parseInt(match[2], 10);
+      const num3 = parseInt(match[3], 10);
+      const num4 = parseInt(match[4], 10);
+      const num5 = parseInt(match[5], 10);
+      let nums: number[] = [num1, num2, num3, num4, num5];
+      let res: number[] = []
+      for (let num of nums) {
+        if (isPrime(num)) {
+          res.push(num);
+        }
+      }
+      return String(res.join(", "));
+    }
+  }
   return "";
+}
+
+function isPrime(num: number): boolean {
+  if (num <= 1) return false;          
+  if (num === 2) return true;         
+  if (num % 2 === 0) return false;    
+
+  const limit = Math.sqrt(num);
+  for (let i = 3; i <= limit; i += 2) {
+    if (num % i === 0) {
+      return false;                   
+    }
+  }
+  return true;                       
 }
