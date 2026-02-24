@@ -14,15 +14,17 @@ export default function QueryProcessor(query: string): string {
     return "nicholan";
   }
 
-  if (query.toLowerCase().includes("33 plus 91")){
-    return "124";
-  }
   if (query.toLowerCase().includes("largest")){
-    return "23";
+    ;
   }
 
-  if (query.toLowerCase().includes("20 plus 22")){
-    return "44";
+  if (query.toLowerCase().includes("plus")) {
+    const match = query.match(/(\d+)\s+plus\s+(\d+)/i);
+    if (match) {
+      const left = parseInt(match[1], 10);
+      const right = parseInt(match[2], 10);
+      return String(left + right);
+    }
   }
   return "";
 }
