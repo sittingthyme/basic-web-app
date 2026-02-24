@@ -91,6 +91,15 @@ export default function QueryProcessor(query: string): string {
       return String(res.join(", "));
     }
   }
+
+  if (query.toLowerCase().includes("power of")) {
+    const match = query.match(/(\d)\s+ to\s+ the\s+ power\s+ of\s+(\d+)/i);
+    if (match) {
+      const base = parseInt(match[1], 10);
+      const exponent = parseInt(match[2], 10);
+      return String(Math.pow(base, exponent));
+    }
+  }
   return "";
 }
 
