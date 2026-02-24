@@ -35,6 +35,14 @@ export default function QueryProcessor(query: string): string {
       return String(left + right);
     }
   }
+  if (query.toLowerCase().includes("minus")) {
+    const match = query.match(/(\d+)\s+minus\s+(\d+)/i);
+    if (match) {
+      const left = parseInt(match[1], 10);
+      const right = parseInt(match[2], 10);
+      return String(left - right);
+    }
+  }
 
   if (query.toLowerCase().includes("multiplied")) {
     const match = query.match(/(\d+)\s+multiplied\s+by\s+(\d+)/i);
