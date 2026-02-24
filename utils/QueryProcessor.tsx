@@ -15,7 +15,13 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("largest")){
-    ;
+    const match = query.match(/largest:(\d+),(\d+),(\d+)/i);
+    if (match) {
+      const num1 = parseInt(match[1], 10);
+      const num2 = parseInt(match[2], 10);
+      const num3 = parseInt(match[3], 10);
+      return String(Math.max(num1, num2, num3));
+    }
   }
 
   if (query.toLowerCase().includes("plus")) {
