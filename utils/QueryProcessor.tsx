@@ -101,6 +101,19 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (
+    query.toLowerCase().includes("multiplied by") &&
+    query.toLowerCase().includes("plus")
+  ) {
+    const match = query.match(/(\d+)\s+multiplied\s+by\s+(\d+)\s+plus\s+(\d+)/i);
+    if (match) {
+      const a = parseInt(match[1], 10);
+      const b = parseInt(match[2], 10);
+      const c = parseInt(match[3], 10);
+      return String(a * b + c);
+    }
+  }
+
   return "";
 }
 
