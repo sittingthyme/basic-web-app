@@ -40,7 +40,7 @@ export default function QueryProcessor(query: string): string {
     if (match) {
       const left = parseInt(match[1], 10);
       const right = parseInt(match[2], 10);
-      return String(right - left);
+      return String(left - right);
     }
   }
 
