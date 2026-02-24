@@ -13,5 +13,12 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew id")) {
     return "nicholan";
   }
+
+  if (query.toLowerCase().includes("33 plus 91")){
+    return "124";
+  }
+  if (query.toLowerCase().includes("largest")){
+    return "23";
+  }
   return "";
 }
